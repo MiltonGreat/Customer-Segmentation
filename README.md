@@ -1,4 +1,4 @@
-# # Bank Customer Segmentation Using Clustering Techniques
+# Bank Customer Segmentation Using Clustering Techniques
 
 ## Project Overview
 
