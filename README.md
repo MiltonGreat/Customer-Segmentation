@@ -1,57 +1,101 @@
-# Bank Customer Segmentation Using Clustering Techniques
+# Bank Marketing Campaign Prediction
 
-## Project Overview
+This project analyzes a bank marketing dataset to predict customer subscription to term deposits (`yes` or `no`). The dataset contains information on customer demographics, campaign interactions, and previous outcomes.
 
-This project aims to segment bank customers based on their transaction history and demographic data. The goal is to use clustering techniques, such as K-Means, to group customers into distinct segments. By understanding the characteristics of each segment, the bank can offer more tailored services and marketing strategies, helping improve customer satisfaction and engagement.
+---
 
-### Objectives
-- Analyze customer transaction patterns and demographic information.
-- Segment customers into distinct groups using K-Means clustering.
-- Identify key characteristics of each segment to enhance marketing strategies and improve customer retention.
-- Provide insights for risk management and service customization based on customer profiles.
+## Dataset Overview
 
-## Dataset
+- **Source**: Bank Marketing Data
+- **Target Variable**: `y` (1 for "yes", 0 for "no")
+- **Features**: Customer demographics, campaign details, and previous outcomes.
 
-The dataset used for this project is the "Bank Customer Dataset," which includes the following columns:
+---
 
-- `cat__job_*`: One-hot encoded categorical features representing various job types.
-- `cat__marital_*`: Categorical features for marital status.
-- `cat__education_*`: Categorical features for education level.
-- `cat__default_*`: Whether the customer has credit default.
-- `cat__housing_*`: Whether the customer has a housing loan.
-- `cat__loan_*`: Whether the customer has a personal loan.
-- `remainder__age`: Age of the customer.
-- `remainder__balance`: Balance on the customer's account.
-- `remainder__duration`: Duration of the last contact.
-- `remainder__campaign`: Number of contacts during this campaign.
-- Additional features representing various characteristics of the customer.
+## Objectives
 
-### Methodology
-1. **Data Loading and Initial Exploration**:
-   - Load the dataset and perform initial exploration to understand its structure and contents.
+1. **Analyze the dataset**:
+   - Handle missing values, outliers, and categorical data.
+   - Perform exploratory data analysis (EDA).
+2. **Build Classification Models**:
+   - Predict customer subscription using Logistic Regression and Random Forest.
+3. **Hyperparameter Tuning**:
+   - Use `GridSearchCV` to optimize the Random Forest model.
+4. **Evaluate Model Performance**:
+   - Assess accuracy, precision, recall, F1-score, and AUC-ROC.
 
-2. **Missing Values Handling**:
-   - Identify and handle missing values by imputing numerical columns with their median and categorical columns with their mode.
+---
 
-3. **Duplicate Data Check**:
-   - Check for and remove duplicate rows from the dataset.
+## Project Steps
 
-4. **Outlier Detection and Handling**:
-   - Detect outliers using the IQR method and cap them accordingly.
+### 1. Data Preprocessing
+- One-hot encoded categorical columns.
+- Converted target variable (`y`) to binary (1 for "yes", 0 for "no").
+- Split data into training (80%) and test (20%) sets.
 
-5. **Feature Engineering**:
-   - Encode categorical features into numerical values and scale numerical features using `StandardScaler`.
+### 2. Exploratory Data Analysis (EDA)
+- Checked for missing values and imputed them.
+- Analyzed feature distributions and correlations.
+- Identified and capped outliers.
 
-6. **K-Means Clustering**:
-   - Determine the optimal number of clusters using the Elbow Method and Silhouette Analysis.
-   - Fit the K-Means model and evaluate its performance.
+### 3. Model Training and Evaluation
+#### Models:
+1. **Logistic Regression**:
+   - Accuracy: 89.87%
+   - Recall for minority class: 35%
+   - AUC-ROC: Moderate
+2. **Random Forest**:
+   - Accuracy: 90.38%
+   - Recall for minority class: 40%
+   - AUC-ROC: Excellent (0.9265)
 
-7. **Cluster Analysis**:
-   - Analyze the characteristics of each segment and visualize the results.
+#### Hyperparameter Tuning:
+- Best parameters for Random Forest:
+  - `n_estimators=100`, `max_depth=None`, `min_samples_split=2`, `min_samples_leaf=1`, `bootstrap=True`
+- Performance after tuning:
+  - Accuracy: 90.31%
+  - Recall for minority class: 34%
+  - AUC-ROC: 0.9265
 
-## Key Results
+---
 
-The clustering analysis produced four distinct customer segments. 
+## Key Insights
+
+- The Random Forest model outperformed Logistic Regression in overall metrics and AUC-ROC.
+- The recall for the minority class (class `1`) is low, suggesting class imbalance affects model performance.
+
+---
+
+## Recommendations
+
+- Address class imbalance using techniques like SMOTE or class weighting.
+- Explore feature importance and ensemble methods to improve prediction.
+- Fine-tune Logistic Regression with regularization.
+
+---
+
+## Visualization
+
+### Receiver Operating Characteristic (ROC) Curve
+![ROC Curve](path/to/roc_curve.png)
+
+---
+
+## Future Work
+
+- Experiment with other classifiers (e.g., XGBoost, SVM).
+- Implement ensemble techniques to combine model strengths.
+- Use advanced imbalance handling techniques.
+
+---
+
+## Results
+
+- **Best Model**: Random Forest
+- **AUC-ROC**: 0.9265
+- **Accuracy**: 90.31%
+- **Recall (Minority Class)**: 34%
+
 
 ## Source
 
