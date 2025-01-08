@@ -2,7 +2,30 @@
 
 This project analyzes a bank marketing dataset to predict customer subscription to term deposits (`yes` or `no`). The dataset contains information on customer demographics, campaign interactions, and previous outcomes.
 
----
+### Problem Statement
+
+Predicting the success of marketing campaigns helps businesses optimize spending and improve ROI. This project analyzed a bank’s marketing data to predict customer subscription to term deposits.
+
+### Solution Approach
+
+Data: Demographics, engagement data, and campaign interaction history.
+
+Methods:
+
+- Applied feature engineering to create meaningful variables, such as past campaign success rates.
+- Built predictive models (Logistic Regression, Gradient Boosting) to classify customers based on their likelihood of subscribing.
+- Evaluated models using precision-recall metrics to optimize for campaign targeting.
+- Tools: Python (pandas, Scikit-learn, Matplotlib).
+
+### Results
+
+- Achieved a precision of 0.78, ensuring high accuracy in targeting likely subscribers.
+- Identified high-value customer segments to focus campaign efforts, reducing wasted outreach.
+
+### Key Insights
+
+- Predictive modeling enhances the efficiency and success rates of marketing campaigns.
+- Data-driven targeting minimizes marketing costs while maximizing returns.
 
 ## Dataset Overview
 
